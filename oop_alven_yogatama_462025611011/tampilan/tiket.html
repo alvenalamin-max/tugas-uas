@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiket Saya</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Tiket Berhasil Dibuat!</h1>
+
+    <div class="ticket">
+
+        <h2>🎟️ TIKET WAHANA</h2>
+
+        <hr>
+
+        <p>
+            <strong>Nama:</strong>
+            {{ tiket.nama }}
+        </p>
+
+        <p>
+            <strong>Gender:</strong>
+            {{ tiket.gender }}
+        </p>
+
+        <p>
+            <strong>Wahana:</strong>
+            {{ tiket.wahana }}
+        </p>
+
+        <p>
+            <strong>Jumlah Tiket:</strong>
+            {{ tiket.jumlah }}
+        </p>
+
+        <p>
+            <strong>Harga Satuan:</strong>
+            Rp{{ "{:,}".format(tiket.harga) }}
+        </p>
+
+        <hr>
+
+        <h2>
+            Total:
+            Rp{{ "{:,}".format(tiket.total) }}
+        </h2>
+
+    </div>
+
+    <a href="/pesan" class="button">
+        Pesan Lagi
+    </a>
+
+    <a href="/" class="back">
+        Kembali ke Beranda
+    </a>
+
+</div>
+
+</body>
+</html>

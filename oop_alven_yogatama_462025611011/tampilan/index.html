@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Tiket Wahana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Sistem Pemesanan Tiket Wahana</h1>
+
+        <p>Silakan pilih wahana yang ingin dipesan.</p>
+
+        <div class="wahana-container">
+
+            {% for item in wahana %}
+
+            <div class="card">
+
+                <h2>{{ item.get_nama() }}</h2>
+
+                <p>Kategori: {{ item.get_kategori() }}</p>
+
+                <p>
+                    Harga:
+                    <strong>Rp{{ "{:,}".format(item.get_harga()) }}</strong>
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <a href="/pesan" class="button">
+            Pesan Tiket
+        </a>
+
+    </div>
+
+</body>
+</html>

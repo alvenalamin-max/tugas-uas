@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Tiket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Pesan Tiket</h1>
+
+    {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+
+        <label>Nama Pengunjung</label>
+        <input
+            type="text"
+            name="nama"
+            placeholder="Masukkan nama"
+            required
+        >
+
+        <label>Gender</label>
+        <select name="gender">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <label>Pilih Wahana</label>
+        <select name="wahana">
+
+            {% for item in wahana %}
+                <option value="{{ loop.index0 }}">
+                    {{ item.get_nama() }} - Rp{{ "{:,}".format(item.get_harga()) }}
+                </option>
+            {% endfor %}
+
+        </select>
+
+        <label>Jumlah Tiket</label>
+        <input
+            type="number"
+            name="jumlah"
+            min="1"
+            max="10"
+            placeholder="Masukkan jumlah tiket"
+            required
+        >
+
+        <button type="submit">
+            Pesan Tiket
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/" class="back">
+        ← Kembali
+    </a>
+
+</div>
+
+</body>
+</html>
